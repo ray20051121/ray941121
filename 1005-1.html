@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>99乘法表</title>
+    
+  
+</head>
+<body>
+    <center>
+    <style>
+        td{
+            border: 1px black solid; 
+            text-align: center;
+        }
+        table{
+            border: 1px black solid; 
+            width: 300px;
+
+        }
+</style>
+    <a href="index.html" class="btn btn-link btn-dark mb-2 text-light">返回首頁</a>
+
+    <table id="my_table">
+        <thead>
+            <tr>
+                <th colspan="3" style="text-align: center;background-color: #000;color: #fff;font-size: 14px;font-weight: bolder;">九九乘法表</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        function text(str){
+
+            var a = `${str.length == 1?"&nbsp&nbsp"+str:str}`
+            // debugger
+            return a
+        }
+        $(document).ready(function () {
+            var table_html = ""
+            var output = ""
+            for(let i =1;i < 10;i++){
+                table_html += "<td>"
+                for(let j =1;j < 10;j++){
+                    table_html += `
+                        ${i} * ${j} = ${text(""+(i*j))} <br>
+                    `
+                }
+                table_html = `${table_html}</td>`
+                // debugger
+                if (i % 3 == 0){
+                    output += `<tr>
+                        ${table_html}
+                    </tr>`
+                    table_html = ""
+                }
+            }
+            console.log(output)
+            $("#my_table tbody").html(output);
+        });
+    </script>
+    </center>
+</body>
+</html>
